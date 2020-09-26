@@ -1,7 +1,7 @@
 {
   "name": "transbank-pos-sdk-web-client",
   "productName": "Cliente POS - Transbank",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "SDK Web client para POS integrado",
   "main": ".webpack/main",
   "scripts": {

@@ -1,6 +1,6 @@
 var app = require('express')();
 var http = require('http').createServer(app);
-var io = require('socket.io')(http, {cookie: false});
+var io = require('socket.io')(http, {cookie: false, serveClient: false});
 import pos from '../pos';
 import windowManager from "../classes/window-manager"
 
