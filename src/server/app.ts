@@ -44,6 +44,23 @@ export default class Server {
                 })
             });
 
+            socket.on('getPortStatus', () => {
+                let response = {
+                    connected: pos.connected,
+                    activePort: pos.getConnectedPort()
+                }
+                io.emit('getPortStatus.response', {success: true, response});
+            });
+
+            socket.on('listPorts', () => {
+                pos.listPorts().then((response) => {
+                    io.emit('listPorts.response', {success: true, response});
+                }).catch((e) => {
+                    io.emit('listPorts.response', { success: false, message: e.toString()});
+                });
+
+            });
+
             socket.on('autoconnect', () => {
                 pos.autoconnect().then((response) => {
                     io.emit('autoconnect.response', { success: true, response});

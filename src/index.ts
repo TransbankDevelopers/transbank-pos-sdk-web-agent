@@ -2,7 +2,6 @@ import { app, BrowserWindow, ipcMain } from 'electron';
 import path from 'path'
 import pos from './pos'
 import windowManager from "./classes/window-manager"
-
 ipcMain.handle('connect-to-pos', (event, ...args) => {
   pos.autoconnect().then((port) => {
     if (port) {
