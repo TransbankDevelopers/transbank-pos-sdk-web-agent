@@ -1,8 +1,8 @@
 {
-  "name": "transbank-pos-sdk-web-client",
-  "productName": "Cliente POS - Transbank",
+  "name": "transbank-pos-sdk-web-agent",
+  "productName": "Transbank POS Agent",
   "version": "0.0.2",
-  "description": "SDK Web client para POS integrado",
+  "description": "Agente para SDK Web de POS integrado",
   "main": ".webpack/main",
   "scripts": {
     "start": "electron-forge start",
@@ -16,7 +16,7 @@
     "name": "Gonzalo De Spirito",
     "email": "gonzunigad@gmail.com"
   },
-  "license": "MIT",
+  "license": "BSD-3 Clause",
   "config": {
     "forge": {
       "packagerConfig": {},
