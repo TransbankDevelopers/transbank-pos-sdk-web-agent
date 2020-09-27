@@ -16,7 +16,7 @@
     "name": "Gonzalo De Spirito",
     "email": "gonzunigad@gmail.com"
   },
-  "license": "BSD-3 Clause",
+  "license": "BSD-3-Clause",
   "config": {
     "forge": {
       "packagerConfig": {},
