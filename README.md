@@ -5,6 +5,7 @@ Este proyecto es parte del SDK Web para POS integrado.
 Este SDK Web consta de dos partes: 
 
 Agente **(este repositorio)**: Este agente es un programa que se debe instalar e inicializar en el computador que tendrá el equipo POS conectado físicamente. Al instalar e inicializar este servicio, se creará un servidor de websockets local en el puerto `8090` que permitirá, a través del [SDK de Javascript](https://github.com/TransbankDevelopers/transbank-pos-sdk-web-js), poder enviar y recibir mensajes del equipo POS, de manera simple y transparente. 
+
 [SDK Javascript](https://github.com/TransbankDevelopers/transbank-pos-sdk-web-js): Este SDK se debe instalar en el software de caja (o cualquier software web que presente HTML, CSS y JS en un navegador web). Este SDK entrega una interfaz simple para conectarse con el agente, de manera que se puedan mandar instrucciones al POS con un API fácil de usar. 
 
 ## Quick start 
