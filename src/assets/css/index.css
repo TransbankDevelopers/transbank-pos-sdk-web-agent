@@ -29,6 +29,14 @@ h1, h2, h3, h4 {
 }
 
 #logs {
-  overflow: scroll;
+  overflow-y: scroll;
   height: 100px;
+}
+
+#logs_container {display: none}
+
+#log_toggle {
+  font-size: 12px;
+  margin-top: 20px;
+  display: block;
 }

@@ -41,3 +41,17 @@ ipcRenderer.on('log', (event, data) => {
     console.log('Server log', data);
     document.getElementById('logs').innerHTML = data + '\n' + document.getElementById('logs').innerHTML
 })
+
+let showed = false;
+document.getElementById('log_toggle').onclick = function() {
+    showed = !showed;
+    if (showed) {
+        document.getElementById('log_toggle').innerText = 'Ocultar últimos eventos'
+        document.getElementById('logs_container').style.display = 'block';
+    } else {
+        document.getElementById('log_toggle').innerText = 'Mostrar últimos eventos'
+        document.getElementById('logs_container').style.display = 'none';
+    }
+
+    return false;
+}
