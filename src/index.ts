@@ -29,6 +29,8 @@ autoLauncher.isEnabled().then(function(isEnabled) {
 console.log = (...args) => {
   if (mainWindow !== null) {
     mainWindow.webContents.send('log', [...args])
+  } else {
+    console.log(..args);
   }
 }
 
