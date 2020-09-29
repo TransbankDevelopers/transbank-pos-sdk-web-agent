@@ -30,7 +30,7 @@ console.log = (...args) => {
   if (win !== null) {
     win.webContents.send('log', [...args])
   } else {
-    console.log(..args);
+    console.log(...args);
   }
 }
 
