@@ -36,3 +36,8 @@ ipcRenderer.on('count', (event, data) => {
     console.log('count updated', data);
     document.getElementById('usersCount').innerHTML = data
 })
+
+ipcRenderer.on('log', (event, data) => {
+    console.log('Server log', data);
+    document.getElementById('logs').innerHTML = data + '\n' + document.getElementById('logs').innerHTML
+})

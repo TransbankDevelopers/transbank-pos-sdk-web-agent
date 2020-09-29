@@ -22,3 +22,13 @@ h1, h2, h3, h4 {
 .content {
   padding: 15px;
 }
+
+.logs_title {
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+#logs {
+  overflow: scroll;
+  height: 100px;
+}

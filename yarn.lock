@@ -6901,10 +6901,10 @@ tough-cookie@~2.5.0:
     psl "^1.1.28"
     punycode "^2.1.1"
 
-transbank-pos-sdk@^0.0.1:
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/transbank-pos-sdk/-/transbank-pos-sdk-0.0.1.tgz#89b6c9f8ad1f5179efe676f546864a9579180194"
-  integrity sha512-7T6lrs+mifSIWGr/ZPbOccuQ/Zsc8jhwUYWN98Vyq25TO71s0f1cBXk6b3s5SlO0W2IJjGZF4QbRnvwokwqXJw==
+transbank-pos-sdk@^0.1.0:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/transbank-pos-sdk/-/transbank-pos-sdk-0.1.2.tgz#ee80aa8e527534d68d7826a3352ab0c59053a1cc"
+  integrity sha512-f1ZYaZzsEIPO+p5vyjZKX8BFwvUWmNVcvNp3TWKqhAHAUeNyhYYxhqbucFc3Ii6UpyzOOcdcSKUXsblHv8HLPQ==
   dependencies:
     "@babel/runtime" "^7.11.2"
     "@serialport/parser-inter-byte-timeout" "^9.0.1"

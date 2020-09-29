@@ -16,6 +16,8 @@ var AutoLaunch = require('auto-launch');
 var autoLauncher = new AutoLaunch({
   name: "MyApp"
 });
+
+let mainWindow = null;
 // Checking if autoLaunch is enabled, if not then enabling it.
 autoLauncher.isEnabled().then(function(isEnabled) {
   if (isEnabled) return;
@@ -23,6 +25,12 @@ autoLauncher.isEnabled().then(function(isEnabled) {
 }).catch(function (err) {
   throw err;
 });
+
+console.log = (...args) => {
+  if (mainWindow !== null) {
+    mainWindow.webContents.send('log', [...args])
+  }
+}
 
 
 declare const MAIN_WINDOW_WEBPACK_ENTRY: any;
@@ -35,9 +43,9 @@ if (require('electron-squirrel-startup')) { // eslint-disable-line global-requir
 
 const createWindow = (): BrowserWindow => {
   // Create the browser window.
-  let mainWindow = new BrowserWindow({
-    height: 200,
-    width: 400,
+  mainWindow = new BrowserWindow({
+    height: 300,
+    width: 450,
     icon: path.join(__dirname, '../../src/assets/icons/AppIcon.icns'),
     webPreferences: {
       nodeIntegration: true,
