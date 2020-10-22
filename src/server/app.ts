@@ -143,6 +143,16 @@ export default class Server {
                 })
             });
 
+            socket.on('multicodeSale', ({amount, ticket, commerceCode = '0'}) => {
+                pos.multicodeSale(amount, ticket, commerceCode, true, (data) => {
+                    io.emit('sale_status.response', data.split('|'));
+                }).then((response) => {
+                    io.emit('sale.response', { success: true, response});
+                }).catch((e) => {
+                    io.emit('sale.response', { success: false, message: e.toString()});
+                })
+            });
+
 
         });
 
