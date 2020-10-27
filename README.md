@@ -17,7 +17,7 @@ Descarga el ejecutable desde la [sección de releases](https://github.com/Transb
 Una vez iniciada la aplicación por primera vez, se configurará automáticamente para arrancar al iniciar el computador. 
 
 
-# Inicie automático
+# Inicio automático
 Al iniciar el programa, este automáticamente se configura para iniciar cuando el computador prenda/inicie sesión. 
 
 ## Compilar manualmente
