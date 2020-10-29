@@ -121,11 +121,11 @@ La documentación relevante para usar este SDK es:
 ## Generar una nueva versión (con deploy automático a NPM)
 
 Para generar una nueva versión, se debe crear un PR (con un título "Prepare release X.Y.Z" con los valores que correspondan para `X`, `Y` y `Z`). Se debe seguir el estándar semver para determinar si se incrementa el valor de `X` (si hay cambios no retrocompatibles), `Y` (para mejoras retrocompatibles) o `Z` (si sólo hubo correcciones a bugs).
-
 En ese PR deben incluirse los siguientes cambios:
-
 1. Modificar el archivo `CHANGELOG.md` para incluir una nueva entrada (al comienzo) para `X.Y.Z` que explique en español los cambios **de cara al usuario del SDK**.
 2. Modificar el archivo `package.json` y modificar la versión
+
+Asegurarse de que mantenga un mismo versionamiento con su par SDK Web Javascript, al menos en los valores X.Y. 
 
 Luego de obtener aprobación del pull request, debe mezclarse a master e inmediatamente generar un release en GitHub con el tag `vX.Y.Z`. En la descripción del release debes poner lo mismo que agregaste al changelog.
 Adicionalmente, se debe compilar el ejecutable para Windows y Mac (opcionalmente también el de linux), siguiendo las instrucciones de este REDME de como empaquetar la aplicación para cada plataforma. 
