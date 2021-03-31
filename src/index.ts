@@ -1,4 +1,4 @@
-import { app, BrowserWindow, ipcMain } from 'electron';
+import { app, BrowserWindow, ipcMain, Tray, Menu} from 'electron';
 import path from 'path'
 import pos from './pos'
 import windowManager from "./classes/window-manager"
@@ -9,7 +9,7 @@ ipcMain.handle('connect-to-pos', (event, ...args) => {
     }
   });
 })
-import Server from './server/app.ts';
+import Server from './server/app';
 const server = new Server();
 
 var AutoLaunch = require('auto-launch');
@@ -67,6 +67,21 @@ const createWindow = (): BrowserWindow => {
 
   server.start()
 
+
+  let tray = null;
+  mainWindow.on('minimize', function (event) {
+      event.preventDefault();
+      mainWindow.hide();
+      tray = createTray(mainWindow);
+  });
+
+  mainWindow.on('restore', function (event) {
+      mainWindow.show();
+      tray.destroy();
+  });
+  
+  return mainWindow;
+
 };
 
 // This method will be called when Electron has finished
@@ -90,6 +105,28 @@ app.on('activate', () => {
     createWindow();
   }
 });
+
+const createTray = (window:BrowserWindow) => {
+    let appIcon = new Tray(path.join(__dirname, '../../src/assets/tbk.png'));
+    const contextMenu = Menu.buildFromTemplate([
+        {
+            label: 'Mostrar', click: function () {
+                window.show();
+            }
+        },
+        {
+            label: 'Salir', click: function () {
+                app.quit();
+            }
+        }
+    ]);
+
+    appIcon.on('double-click', function (event) {
+        window.show();
+    });
+    appIcon.setContextMenu(contextMenu);
+    return appIcon;
+}
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and import them here.
