@@ -7,7 +7,7 @@ import windowManager from "../classes/window-manager"
 export default class Server {
     start() {
         app.get('/', (req, res) => {
-            res.send('<h1 style="font-family: sans-serif;">Transbank POS Client is active ✅</h1>');
+            res.send('<h1 style="font-family: sans-serif;">Transbank POS Client está activo ✅</h1>');
         });
 
         pos.autoconnect();
@@ -20,9 +20,14 @@ export default class Server {
             }
         }
 
+
+
         let clientsCount = 0;
         io.on('connection', (socket) => {
             updateClientCount(clientsCount + 1);
+            pos.on('port_closed', () => {
+                io.emit('event.port_closed');
+            })
 
             socket.on('disconnect', () => {
                 updateClientCount(clientsCount - 1);
