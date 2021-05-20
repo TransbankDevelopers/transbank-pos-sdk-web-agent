@@ -140,7 +140,7 @@ export default class Server {
 
             socket.on('sale', ({amount, ticket, eventName}) => {
                 pos.sale(amount, ticket, true, (data) => {
-                    io.emit('sale_status.response', data.split('|'));
+                    io.emit('sale_status.response', data);
                 }).then((response) => {
                     io.emit(eventName, { success: true, response});
                 }).catch((e) => {
@@ -150,7 +150,7 @@ export default class Server {
 
             socket.on('multicodeSale', ({amount, ticket, commerceCode = '0', eventName}) => {
                 pos.multicodeSale(amount, ticket, commerceCode, true, (data) => {
-                    io.emit('multicodeSale_status.response', data.split('|'));
+                    io.emit('multicodeSale_status.response', data);
                 }).then((response) => {
                     io.emit(eventName, { success: true, response});
                 }).catch((e) => {
