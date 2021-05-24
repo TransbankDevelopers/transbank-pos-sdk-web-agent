@@ -2,7 +2,8 @@ var app = require('express')();
 var http = require('http').createServer(app);
 var io = require('socket.io')(http, {cookie: false, serveClient: false});
 import pos from '../pos';
-import windowManager from "../classes/window-manager"
+import windowManager from "../classes/window-manager";
+import {version} from '../../package.json';
 
 export default class Server {
     start() {
@@ -20,8 +21,6 @@ export default class Server {
             }
         }
 
-
-
         let clientsCount = 0;
         io.on('connection', (socket) => {
             updateClientCount(clientsCount + 1);
@@ -31,6 +30,10 @@ export default class Server {
 
             socket.on('disconnect', () => {
                 updateClientCount(clientsCount - 1);
+            });
+
+            socket.on('getVersion', () => {
+                io.emit('getVersion.response', version);
             });
 
             socket.on('openPort', ({port, baudrate, eventName}) => {
