@@ -13,8 +13,8 @@
   },
   "keywords": [],
   "author": {
-    "name": "Gonzalo De Spirito",
-    "email": "gonzunigad@gmail.com"
+    "name": "Transbank Developers",
+    "email": "transbankdevelopers@continuum.cl"
   },
   "license": "BSD-3-Clause",
   "config": {
@@ -76,6 +76,7 @@
     "@typescript-eslint/parser": "^3.9.0",
     "css-loader": "^4.2.1",
     "electron": "11",
+    "electron-rebuild": "^2.3.5",
     "eslint": "^7.6.0",
     "eslint-plugin-import": "^2.20.0",
     "fork-ts-checker-webpack-plugin": "^5.0.14",
