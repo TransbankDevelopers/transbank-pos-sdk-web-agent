@@ -1,6 +1,6 @@
 ## [3.0.0] - 25-05-2021
 
-Se mejoran funcionalidades del agente. Funciona con la versión 3.0.0 del [SDK Web](https://github.com/TransbankDevelopers/transbank-pos-sdk-web-js/releases/tag/2.1.0) 
+Se mejoran funcionalidades del agente. Funciona con la versión 3.0.0 del [SDK Web](https://github.com/TransbankDevelopers/transbank-pos-sdk-web-js/releases/tag/3.0.0) 
 
 ### Added
 
