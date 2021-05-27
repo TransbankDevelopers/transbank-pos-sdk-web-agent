@@ -24,6 +24,11 @@ export default class Server {
         let clientsCount = 0;
         io.on('connection', (socket) => {
             updateClientCount(clientsCount + 1);
+
+            pos.on('port_opened', (port) => {
+                io.emit('event.port_opened', port)
+            })
+
             pos.on('port_closed', () => {
                 io.emit('event.port_closed');
             })
