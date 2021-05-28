@@ -1,4 +1,4 @@
-import { app, BrowserWindow, ipcMain, Tray, Menu} from 'electron';
+import { app, BrowserWindow, ipcMain, Tray, Menu, nativeImage} from 'electron';
 import path from 'path'
 import pos from './pos'
 import windowManager from "./classes/window-manager"
@@ -107,25 +107,37 @@ app.on('activate', () => {
 });
 
 const createTray = (window:BrowserWindow) => {
-    let appIcon = new Tray(path.join(__dirname, '../../src/assets/tbk.png'));
-    const contextMenu = Menu.buildFromTemplate([
-        {
-            label: 'Mostrar', click: function () {
-                window.show();
-            }
-        },
-        {
-            label: 'Salir', click: function () {
-                app.quit();
-            }
-        }
-    ]);
+    
+  let tray = new Tray(createNativeImage());
+  const contextMenu = Menu.buildFromTemplate([
+      {
+          label: 'Mostrar', click: function () {
+              window.show();
+          }
+      },
+      {
+          label: 'Salir', click: function () {
+              app.quit();
+          }
+      }
+  ]);
 
-    appIcon.on('double-click', function (event) {
-        window.show();
-    });
-    appIcon.setContextMenu(contextMenu);
-    return appIcon;
+  tray.on('double-click', function (event) {
+      window.show();
+  });
+  tray.setContextMenu(contextMenu);
+  return tray;
+}
+
+const createNativeImage = () => {
+let appIcon: string = '/src/assets/tbk.png';
+
+const path = `${app.getAppPath()}${appIcon}`;
+const image = nativeImage.createFromPath(path);
+
+image.setTemplateImage(true);
+
+return image;
 }
 
 // In this file you can include the rest of your app's specific main process
