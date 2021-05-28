@@ -1,7 +1,7 @@
 {
   "name": "transbank-pos-sdk-web-agent",
   "productName": "Transbank POS Agent",
-  "version": "3.1.0",
+  "version": "3.1.1",
   "description": "Agente para SDK Web de POS integrado",
   "main": ".webpack/main",
   "scripts": {
