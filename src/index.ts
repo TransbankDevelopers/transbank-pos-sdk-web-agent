@@ -130,12 +130,14 @@ const createTray = (window:BrowserWindow) => {
 }
 
 const createNativeImage = () => {
-let appIcon: string = '/src/assets/tbk.png';
+  let icon:string = process.platform === 'win32' ? 'winTrayIcon.png' : 'trayIcon.png';
+  let appIcon: string = process.env.NODE_ENV === "production" ? 
+    path.join(app.getAppPath(), `../trayIcons/${icon}`) : 
+    path.join(app.getAppPath(),`/src/assets/trayIcons/${icon}`);
 
-const path = `${app.getAppPath()}${appIcon}`;
-const image = nativeImage.createFromPath(path);
+  const image = nativeImage.createFromPath(appIcon);
 
-image.setTemplateImage(true);
+  image.setTemplateImage(true);
 
 return image;
 }
