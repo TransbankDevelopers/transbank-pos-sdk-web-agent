@@ -1,3 +1,11 @@
+## [3.1.2] - 07-07-2021
+
+Se solucionan errores del agente. Funciona con la versión 3.1.0 del [SDK Web](https://github.com/TransbankDevelopers/transbank-pos-sdk-web-js/releases/tag/3.1.0)
+
+### Fixed
+
+- Solucionado problema con el icono del traybar en producción.
+
 ## [3.1.1] - 27-05-2021
 
 Se solucionan errores del agente. Funciona con la versión 3.1.0 del [SDK Web](https://github.com/TransbankDevelopers/transbank-pos-sdk-web-js/releases/tag/3.1.0)
