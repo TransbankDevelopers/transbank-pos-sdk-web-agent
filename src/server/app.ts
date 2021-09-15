@@ -74,8 +74,8 @@ export default class Server {
 
             });
 
-            socket.on('autoconnect', ({eventName}) => {
-                pos.autoconnect().then((response) => {
+            socket.on('autoconnect', ({baudrate, eventName}) => {
+                pos.autoconnect(baudrate).then((response) => {
                     io.emit(eventName, { success: true, response});
                 }).catch((e) => {
                     io.emit(eventName, { success: false, message: e.toString()});
