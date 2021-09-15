@@ -1,3 +1,16 @@
+## [3.1.3] - 15-09-2021
+
+Se mejoran funcionalidades. Funciona con la versión 3.1.1 del [SDK Web](https://github.com/TransbankDevelopers/transbank-pos-sdk-web-js/releases/tag/3.1.1)
+
+### Added
+
+- Se añade parámetro para configurar _baudrate_ para el método `autoconnect()`.
+- Se añade el mensaje intermedio para el código de respuesta 80.
+
+### Changed
+
+- Se mejora el despliegue de información de los eventos.
+
 ## [3.1.2] - 07-07-2021
 
 Se solucionan errores del agente. Funciona con la versión 3.1.0 del [SDK Web](https://github.com/TransbankDevelopers/transbank-pos-sdk-web-js/releases/tag/3.1.0)
