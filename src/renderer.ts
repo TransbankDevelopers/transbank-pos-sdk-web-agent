@@ -28,11 +28,17 @@
 
 const { ipcRenderer } = require("electron")
 const {version} = require('../package.json');
-
+import Vue from 'vue'
+import App from './App.vue'
+import store from './store/store'
 import './assets/css/index.css';
-
+import spacetime from "spacetime";
 console.log('👋 This message is being logged by "renderer.js", included via webpack');
 
+new Vue({
+    el: '#app',
+    render: (h) => h(App),
+})
 document.title = `Agente POS v${version} - Transbank`
 
 ipcRenderer.on('count', (event, data) => {
@@ -42,19 +48,6 @@ ipcRenderer.on('count', (event, data) => {
 
 ipcRenderer.on('log', (event, data) => {
     console.log('Server log', data);
-    document.getElementById('logs').innerHTML = data + '\n' + document.getElementById('logs').innerHTML
+    store.logs.unshift({message: data.join(''), time: spacetime.now()});
+    // document.getElementById('logs').innerHTML = `<span>${data}</span>`+ '\n' + document.getElementById('logs').innerHTML
 })
-
-let showed = false;
-document.getElementById('log_toggle').onclick = function() {
-    showed = !showed;
-    if (showed) {
-        document.getElementById('log_toggle').innerText = 'Ocultar últimos eventos'
-        document.getElementById('logs_container').style.display = 'block';
-    } else {
-        document.getElementById('log_toggle').innerText = 'Mostrar últimos eventos'
-        document.getElementById('logs_container').style.display = 'none';
-    }
-
-    return false;
-}
