@@ -27,14 +27,13 @@
  */
 
 const { ipcRenderer } = require("electron")
+const {version} = require('../package.json');
 
 import './assets/css/index.css';
-import {version} from '../package.json';
 
 console.log('👋 This message is being logged by "renderer.js", included via webpack');
 
 document.title = `Agente POS v${version} - Transbank`
-document.getElementById('title').innerHTML += ` v${version}`
 
 ipcRenderer.on('count', (event, data) => {
     console.log('count updated', data);

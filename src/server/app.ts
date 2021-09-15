@@ -3,7 +3,7 @@ var http = require('http').createServer(app);
 var io = require('socket.io')(http, {cookie: false, serveClient: false});
 import pos from '../pos';
 import windowManager from "../classes/window-manager";
-import {version} from '../../package.json';
+const version = require('../../package.json');
 
 export default class Server {
     start() {
