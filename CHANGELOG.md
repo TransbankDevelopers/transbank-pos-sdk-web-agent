@@ -1,3 +1,11 @@
+## [3.1.4] - 24-09-2021
+
+### Fixed
+
+- Se soluciona problema con los mensajes intermedios.
+- Se añaden protecciones para evitar una doble ejecución del agente.
+- Se fuerza el cierre del agente en Mac.
+
 ## [3.1.3] - 15-09-2021
 
 Se mejoran funcionalidades. Funciona con la versión 3.1.1 del [SDK Web](https://github.com/TransbankDevelopers/transbank-pos-sdk-web-js/releases/tag/3.1.1)
