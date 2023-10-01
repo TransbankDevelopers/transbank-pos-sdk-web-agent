@@ -27,5 +27,9 @@ module.exports = [
   {
     test: /\.vue$/,
     loader: 'vue-loader'
+  },
+  {
+    test: /@serialport\/parser-byte-length\/dist\/index\.js$/,
+    use: 'babel-loader',
   }
 ];
