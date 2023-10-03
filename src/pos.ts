@@ -1,6 +1,6 @@
-import { POS } from 'transbank-pos-sdk';
+import { POSIntegrado } from "transbank-pos-sdk";
 
-const pos = new POS();
+const pos = new POSIntegrado();
 pos.setDebug(true);
 
 export default pos;
