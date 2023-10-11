@@ -21,7 +21,10 @@
     "forge": {
       "packagerConfig": {
         "icon": "src/assets/icons/icon",
-        "extraResource": "src/assets/trayIcons"
+        "extraResource": [
+          "src/assets/trayIcons",
+          "crt/"
+        ]
       },
       "makers": [
         {
