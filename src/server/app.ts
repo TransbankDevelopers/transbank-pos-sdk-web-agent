@@ -1,4 +1,5 @@
 const express = require('express');
+const helmet = require('helmet');
 const https = require('https');
 const fs = require('fs');
 const socket = require('socket.io');
@@ -39,6 +40,8 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(csrfProtection);
 app.use(cors(corsOptions));
 app.use(hpp());
+app.use(helmet.noSniff());
+
 const server = https.createServer(options, app);
 const io = socket(server, {cookie: false, serveClient: false});
 const poshandler = new posHandler(io, pos);
