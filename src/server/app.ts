@@ -50,9 +50,6 @@ const poshandler = new posHandler(io, pos);
 
 export default class Server {
     start() {
-        app.get('/', (req, res) => {
-            res.send('<h1 style="font-family: sans-serif;">Transbank POS Client está activo ✅</h1>');
-        });
 
         pos.autoconnect();
 
@@ -143,12 +140,11 @@ export default class Server {
             socket.on('multicodeSale', ({amount, ticket, commerceCode = '0', eventName}) => {
                 poshandler.multicodeSale(amount, ticket, commerceCode, eventName);
             });
-            });
+        });
 
         server.listen(8090, 'localhost', () => {
             console.log('listening on *:8090');
         });
-
     }
 }
 
