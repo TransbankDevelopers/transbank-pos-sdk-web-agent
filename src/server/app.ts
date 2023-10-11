@@ -2,6 +2,7 @@ const express = require('express');
 const https = require('https');
 const fs = require('fs');
 const socket = require('socket.io');
+const path = require('path');
 import pos from '../pos';
 import windowManager from "../classes/window-manager";
 import posHandler from './poshandler';
