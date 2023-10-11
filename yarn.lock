@@ -3359,6 +3359,11 @@ fs.realpath@^1.0.0:
   resolved "https://registry.yarnpkg.com/fs.realpath/-/fs.realpath-1.0.0.tgz#1504ad2523158caa40db4a2787cb01411994ea4f"
   integrity sha1-FQStJSMVjKpA20onh8sBQRmU6k8=
 
+fs@^0.0.1-security:
+  version "0.0.1-security"
+  resolved "https://registry.yarnpkg.com/fs/-/fs-0.0.1-security.tgz#8a7bd37186b6dddf3813f23858b57ecaaf5e41d4"
+  integrity sha512-3XY9e1pP0CVEUCdj5BmfIZxRBTSDycnbqhIOGec9QYtmVH2fbLpj86CFWkrNOkt/Fvty4KZG5lTglL9j/gJ87w==
+
 fsevents@^1.2.7:
   version "1.2.13"
   resolved "https://registry.yarnpkg.com/fsevents/-/fsevents-1.2.13.tgz#f325cb0455592428bcf11b383370ef70e3bfcc38"
@@ -3869,6 +3874,11 @@ https-browserify@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/https-browserify/-/https-browserify-1.0.0.tgz#ec06c10e0a34c0f2faf199f7fd7fc78fffd03c73"
   integrity sha1-7AbBDgo0wPL68Zn3/X/Hj//QPHM=
+
+https@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/https/-/https-1.0.0.tgz#3c37c7ae1a8eeb966904a2ad1e975a194b7ed3a4"
+  integrity sha512-4EC57ddXrkaF0x83Oj8sM6SLQHAWXw90Skqu2M4AEWENZ3F02dFJE/GARA8igO79tcgYqGrD7ae4f5L3um2lgg==
 
 iconv-lite@0.4.24, iconv-lite@^0.4.24, iconv-lite@^0.4.4:
   version "0.4.24"
@@ -7378,10 +7388,10 @@ tough-cookie@~2.5.0:
     psl "^1.1.28"
     punycode "^2.1.1"
 
-transbank-pos-sdk@^2.1.2:
-  version "2.1.2"
-  resolved "https://registry.yarnpkg.com/transbank-pos-sdk/-/transbank-pos-sdk-2.1.2.tgz#1b48a6da3def93bcd2a0f16c48a5444acb54ddb8"
-  integrity sha512-Abvo28GhaazDCDJ5I2gVeOrZDMfU7Fix5dO6BUa5yrvfeCvelK6pIKbns9CSWII3T2BLLYbpCVjWO8jaNi1T6g==
+transbank-pos-sdk@^3.0.0:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/transbank-pos-sdk/-/transbank-pos-sdk-3.0.1.tgz#a0611100cfd7c53c48ba91f667657233ca5f1606"
+  integrity sha512-KFjkRqXcKm5/OsnphW/ZfLk/kVCkl/YvF3qRLIC1hgZNTKWS1Yxt60Z3aJqgvsVkSZuH6/ZnTK/XcIjtwlxrWQ==
   dependencies:
     "@babel/runtime" "^7.11.2"
     "@serialport/parser-inter-byte-timeout" "^9.0.1"

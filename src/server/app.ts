@@ -1,9 +1,23 @@
-var app = require('express')();
-var http = require('http').createServer(app);
-var io = require('socket.io')(http, {cookie: false, serveClient: false});
+const express = require('express');
+const https = require('https');
+const fs = require('fs');
+const socket = require('socket.io');
 import pos from '../pos';
 import windowManager from "../classes/window-manager";
 import posHandler from './poshandler';
+
+const app = express();
+
+const crtFolder: string = process.env.NODE_ENV === "production" ?
+    path.join(__dirname, '..', '..', '..', 'crt/') :
+    path.join(__dirname, '..', '..', 'crt/');
+
+const options = {
+    key: fs.readFileSync(crtFolder + 'localhost.key'),
+    cert: fs.readFileSync(crtFolder + 'localhost.crt')
+};
+const server = https.createServer(options, app);
+const io = socket(server, {cookie: false, serveClient: false});
 const poshandler = new posHandler(io, pos);
 
 export default class Server {
@@ -103,10 +117,7 @@ export default class Server {
             });
             });
 
-
-        });
-
-        http.listen(8090, 'localhost', () => {
+        server.listen(8090, 'localhost', () => {
             console.log('listening on *:8090');
         });
 
