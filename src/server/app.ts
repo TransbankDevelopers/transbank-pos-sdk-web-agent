@@ -3,7 +3,8 @@ var http = require('http').createServer(app);
 var io = require('socket.io')(http, {cookie: false, serveClient: false});
 import pos from '../pos';
 import windowManager from "../classes/window-manager";
-const version = require('../../package.json');
+import posHandler from './poshandler';
+const poshandler = new posHandler(io, pos);
 
 export default class Server {
     start() {
@@ -42,128 +43,64 @@ export default class Server {
             });
 
             socket.on('openPort', ({port, baudrate, eventName}) => {
-                pos.connect(port, baudrate).then((response) => {
-                    io.emit(eventName, { success: true, response});
-                }).catch((e) => {
-                    io.emit(eventName, { success: false, message: e.toString()});
-                })
+                poshandler.openPort(port, baudrate, eventName)
             });
 
             socket.on('closePort', ({eventName}) => {
-                pos.disconnect().then((response) => {
-                    io.emit(eventName, {success: true, response});
-                }).catch((e) => {
-                    io.emit(eventName, {success: false, message: e.toString()});
-                })
+                poshandler.closePort(eventName);
             });
 
             socket.on('getPortStatus', ({eventName}) => {
-                let response = {
-                    connected: pos.connected,
-                    activePort: pos.getConnectedPort()
-                }
-                io.emit(eventName, {success: true, response});
+                poshandler.getPortStatus(eventName);
             });
 
             socket.on('listPorts', ({eventName}) => {
-                pos.listPorts().then((response) => {
-                    io.emit(eventName, {success: true, response});
-                }).catch((e) => {
-                    io.emit(eventName, { success: false, message: e.toString()});
-                });
-
+                poshandler.listPorts(eventName);
             });
 
             socket.on('autoconnect', ({baudrate, eventName}) => {
-                pos.autoconnect(baudrate).then((response) => {
-                    io.emit(eventName, { success: true, response});
-                }).catch((e) => {
-                    io.emit(eventName, { success: false, message: e.toString()});
-                })
+                poshandler.autoConnect(baudrate, eventName);
             });
 
             socket.on('poll', ({eventName}) => {
-                pos.poll().then((response) => {
-                    io.emit(eventName, { success: true, response});
-                }).catch((e) => {
-                    io.emit(eventName, { success: false, message: e.toString()});
-                })
+                poshandler.poll(eventName);
             });
 
             socket.on('loadKeys', ({eventName}) => {
-                pos.loadKeys().then((response) => {
-                    io.emit(eventName, { success: true, response});
-                }).catch((e) => {
-                    io.emit(eventName, { success: false, message: e.toString()});
-                })
+                poshandler.loadKeys(eventName);
             });
 
             socket.on('closeDay', ({eventName}) => {
-                pos.closeDay().then((response) => {
-                    io.emit(eventName, { success: true, response});
-                }).catch((e) => {
-                    io.emit(eventName, { success: false, message: e.toString()});
-                })
+                poshandler.closeDay(eventName);
             });
 
             socket.on('getTotals', ({eventName}) => {
-                pos.getTotals().then((response) => {
-                    io.emit(eventName, { success: true, response});
-                }).catch((e) => {
-                    io.emit(eventName, { success: false, message: e.toString()});
-                })
+                poshandler.getTotals(eventName);
             });
 
             socket.on('getLastSale', ({eventName}) => {
-                pos.getLastSale().then((response) => {
-                    io.emit(eventName, { success: true, response});
-                }).catch((e) => {
-                    io.emit(eventName, { success: false, message: e.toString()});
-                })
+                poshandler.getLastSale(eventName);
             });
 
             socket.on('salesDetail', ({printOnPos, eventName}) => {
-                pos.salesDetail(printOnPos).then((response) => {
-                    io.emit(eventName, { success: true, response});
-                }).catch((e) => {
-                    io.emit(eventName, { success: false, message: e.toString()});
-                })
+                poshandler.salesDetail(printOnPos, eventName);
             });
 
             socket.on('refund', ({operationId, eventName}) => {
-                pos.refund(operationId).then((response) => {
-                    io.emit(eventName, { success: true, response});
-                }).catch((e) => {
-                    io.emit(eventName, { success: false, message: e.toString()});
-                })
+                poshandler.refund(operationId, eventName);
             });
 
-            socket.on('changeToNormalMode', ({printOnPos, eventName}) => {
-                pos.changeToNormalMode(printOnPos).then((response) => {
-                    io.emit(eventName, { success: true, response});
-                }).catch((e) => {
-                    io.emit(eventName, { success: false, message: e.toString()});
-                })
+            socket.on('changeToNormalMode', ({eventName}) => {
+                poshandler.changeToNormalMode(eventName);
             });
 
             socket.on('sale', ({amount, ticket, eventName}) => {
-                pos.sale(amount, ticket, true, (data) => {
-                    io.emit('sale_status.response', data);
-                }).then((response) => {
-                    io.emit(eventName, { success: true, response});
-                }).catch((e) => {
-                    io.emit(eventName, { success: false, message: e.toString()});
-                })
+                poshandler.sale(amount, ticket, eventName);
             });
 
             socket.on('multicodeSale', ({amount, ticket, commerceCode = '0', eventName}) => {
-                pos.multicodeSale(amount, ticket, commerceCode, true, (data) => {
-                    io.emit('multicodeSale_status.response', data);
-                }).then((response) => {
-                    io.emit(eventName, { success: true, response});
-                }).catch((e) => {
-                    io.emit(eventName, { success: false, message: e.toString()});
-                })
+                poshandler.multicodeSale(amount, ticket, commerceCode, eventName);
+            });
             });
 
 
