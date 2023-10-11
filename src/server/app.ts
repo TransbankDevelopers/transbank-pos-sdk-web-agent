@@ -4,6 +4,7 @@ const fs = require('fs');
 const socket = require('socket.io');
 const cors = require('cors');
 const path = require('path');
+const csrf = require('csurf');
 const bodyParser = require('body-parser');
 const hpp = require('hpp');
 import pos from '../pos';
@@ -31,7 +32,11 @@ const corsOptions = {
     credentials: false,
     optionsSuccessStatus: 200
 };
+
+const csrfProtection = csrf({cookie: false});
+
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(csrfProtection);
 app.use(cors(corsOptions));
 app.use(hpp());
 const server = https.createServer(options, app);
