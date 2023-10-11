@@ -8,6 +8,7 @@ const path = require('path');
 const csrf = require('csurf');
 const bodyParser = require('body-parser');
 const hpp = require('hpp');
+const version = require('../../package.json');
 import pos from '../pos';
 import windowManager from "../classes/window-manager";
 import posHandler from './poshandler';
