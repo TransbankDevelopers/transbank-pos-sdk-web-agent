@@ -12,6 +12,10 @@ const crtFolder: string = process.env.NODE_ENV === "production" ?
     path.join(__dirname, '..', '..', '..', 'crt/') :
     path.join(__dirname, '..', '..', 'crt/');
 
+if(!/[A-Z][A-Z0-9_]*/i.test(crtFolder)) {
+    throw new Error('Invalid crt folder');
+}
+
 const options = {
     key: fs.readFileSync(crtFolder + 'localhost.key'),
     cert: fs.readFileSync(crtFolder + 'localhost.crt')
