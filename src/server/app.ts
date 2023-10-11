@@ -43,6 +43,7 @@ app.use(hpp());
 app.use(helmet.noSniff());
 
 const server = https.createServer(options, app);
+https.globalAgent.maxSockets = 3;
 const io = socket(server, {cookie: false, serveClient: false});
 const poshandler = new posHandler(io, pos);
 
