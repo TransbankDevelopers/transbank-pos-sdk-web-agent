@@ -37,7 +37,7 @@ console.log('👋 This message is being logged by "renderer.js", included via we
 
 new Vue({
     el: '#app',
-    render: (h) => h(App),
+    render: (h) => h(App)
 })
 document.title = `Agente POS v${version} - Transbank`
 

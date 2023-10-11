@@ -56,7 +56,7 @@ const createWindow = (): BrowserWindow => {
     width: 450,
     icon: path.join(__dirname, '../../src/assets/icons/AppIcon.icns'),
     webPreferences: {
-      nodeIntegration: true,
+      nodeIntegration: true
     }
   });
 
