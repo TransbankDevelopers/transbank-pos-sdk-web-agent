@@ -2,6 +2,7 @@ const express = require('express');
 const https = require('https');
 const fs = require('fs');
 const socket = require('socket.io');
+const cors = require('cors');
 const path = require('path');
 const bodyParser = require('body-parser');
 const hpp = require('hpp');
@@ -23,7 +24,15 @@ const options = {
     key: fs.readFileSync(crtFolder + 'localhost.key'),
     cert: fs.readFileSync(crtFolder + 'localhost.crt')
 };
+
+const corsOptions = {
+    origin: '*',
+    methods: ['GET', 'POST'],
+    credentials: false,
+    optionsSuccessStatus: 200
+};
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(cors(corsOptions));
 app.use(hpp());
 const server = https.createServer(options, app);
 const io = socket(server, {cookie: false, serveClient: false});
