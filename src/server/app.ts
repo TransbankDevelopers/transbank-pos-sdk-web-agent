@@ -3,6 +3,8 @@ const https = require('https');
 const fs = require('fs');
 const socket = require('socket.io');
 const path = require('path');
+const bodyParser = require('body-parser');
+const hpp = require('hpp');
 import pos from '../pos';
 import windowManager from "../classes/window-manager";
 import posHandler from './poshandler';
@@ -21,6 +23,8 @@ const options = {
     key: fs.readFileSync(crtFolder + 'localhost.key'),
     cert: fs.readFileSync(crtFolder + 'localhost.crt')
 };
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(hpp());
 const server = https.createServer(options, app);
 const io = socket(server, {cookie: false, serveClient: false});
 const poshandler = new posHandler(io, pos);
