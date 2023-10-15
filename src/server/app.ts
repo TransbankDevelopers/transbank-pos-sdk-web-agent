@@ -11,7 +11,7 @@ const hpp = require('hpp');
 const version = require('../../package.json');
 import pos from '../pos';
 import windowManager from "../classes/window-manager";
-import posHandler from './poshandler';
+import PosHandler from './poshandler';
 
 const app = express();
 
@@ -46,7 +46,7 @@ app.use(helmet.noSniff());
 const server = https.createServer(options, app);
 https.globalAgent.maxSockets = 3;
 const io = socket(server, {cookie: false, serveClient: false});
-const poshandler = new posHandler(io, pos);
+const poshandler = new PosHandler(io, pos);
 
 export default class Server {
     start() {

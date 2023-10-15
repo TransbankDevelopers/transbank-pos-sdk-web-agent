@@ -1,7 +1,7 @@
 import { POSIntegrado } from "transbank-pos-sdk";
 import { Server as SocketIOServer } from 'socket.io';
 
-export default class posHandler {
+export default class PosHandler {
 
     pos: POSIntegrado;
     io: SocketIOServer;
