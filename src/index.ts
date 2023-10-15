@@ -1,4 +1,4 @@
-var AutoLaunch = require('auto-launch');
+const AutoLaunch = require('auto-launch');
 import { app, BrowserWindow, ipcMain, Tray, Menu, nativeImage} from 'electron';
 import path from 'path'
 import pos from './pos'
