@@ -8,6 +8,7 @@ const path = require('path');
 const csrf = require('csurf');
 const bodyParser = require('body-parser');
 const hpp = require('hpp');
+const cookieParser = require('cookie-parser');
 const version = require('../../package.json');
 import pos from '../pos';
 import windowManager from "../classes/window-manager";
@@ -35,8 +36,9 @@ const corsOptions = {
     optionsSuccessStatus: 200
 };
 
-const csrfProtection = csrf({cookie: false});
+const csrfProtection = csrf({cookie: true});
 
+app.use(cookieParser())
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(csrfProtection);
 app.use(cors(corsOptions));
