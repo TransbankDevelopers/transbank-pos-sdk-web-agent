@@ -36,7 +36,7 @@ const corsOptions = {
     optionsSuccessStatus: 200
 };
 
-const csrfProtection = csrf({cookie: true});
+const csrfProtection = csrf({ cookie: { httpOnly: true, secure: true }});
 
 app.use(cookieParser())
 app.use(bodyParser.urlencoded({extended: true}));
