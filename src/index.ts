@@ -1,3 +1,4 @@
+const AutoLaunch = require('auto-launch');
 import { app, BrowserWindow, ipcMain, Tray, Menu, nativeImage} from 'electron';
 import path from 'path'
 import pos from './pos'
@@ -12,7 +13,6 @@ ipcMain.handle('connect-to-pos', (event, ...args) => {
 import Server from './server/app';
 const server = new Server();
 
-var AutoLaunch = require('auto-launch');
 var autoLauncher = new AutoLaunch({
   name: "MyApp"
 });
@@ -56,7 +56,7 @@ const createWindow = (): BrowserWindow => {
     width: 450,
     icon: path.join(__dirname, '../../src/assets/icons/AppIcon.icns'),
     webPreferences: {
-      nodeIntegration: true,
+      nodeIntegration: true
     }
   });
 

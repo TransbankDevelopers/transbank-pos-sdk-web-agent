@@ -1,7 +1,7 @@
 {
   "name": "transbank-pos-sdk-web-agent",
   "productName": "Transbank POS Agent",
-  "version": "3.1.5b",
+  "version": "3.1.5-beta2",
   "description": "Agente para SDK Web de POS integrado",
   "main": ".webpack/main",
   "scripts": {
@@ -21,7 +21,10 @@
     "forge": {
       "packagerConfig": {
         "icon": "src/assets/icons/icon",
-        "extraResource": "src/assets/trayIcons"
+        "extraResource": [
+          "src/assets/trayIcons",
+          "crt/"
+        ]
       },
       "makers": [
         {
@@ -89,8 +92,16 @@
   },
   "dependencies": {
     "auto-launch": "^5.0.6",
+    "body-parser": "^1.20.2",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "csurf": "^1.11.0",
     "electron-squirrel-startup": "^1.0.0",
     "express": "4.17.3",
+    "fs": "^0.0.1-security",
+    "helmet": "^7.0.0",
+    "hpp": "^0.2.3",
+    "https": "^1.0.0",
     "socket.io": "^2.5.0",
     "spacetime": "^6.16.3",
     "transbank-pos-sdk": "^3.0.0",
