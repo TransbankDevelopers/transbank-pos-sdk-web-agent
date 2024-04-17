@@ -100,5 +100,14 @@ openssl x509 -req -in server.csr -CA rootCA.pem -CAkey rootCA.key -CAcreateseria
 
 Como resultado de ejecutar ambos comandos, se habrán generado los archivos **localhost.key** y **localhost.crt**.
 
-Estos archivos deberás copiarlos a la carpeta 'resources/crt' de tu instalación del agente para POS.
+## Instalar certificado
+Luego de haber generado ambos certificados, se deben instalar para el funcionamiento del agente. Para esto deberás copiarlos a la carpeta 'resources/crt' de tu instalación del agente para POS.
+Al iniciar el agente, si se han copiado correctamente se desplegará el siguiente mensaje:
+
+![alt text](image.png)
+
+Desde cualquier navegador podremos comprobar que el agente es reconocido como una conexión segura, accediendo al puerto que expone en el mensaje anterior a través de [https://localhost:8090](https://localhost:8090)
+
+![alt text](image-1.png)
+
 Si intentas iniciar el agente sin estos certificados obtendrás un error de ejecución.
