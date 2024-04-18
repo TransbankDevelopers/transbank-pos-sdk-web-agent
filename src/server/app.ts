@@ -25,8 +25,10 @@ if(!/[A-Z][A-Z0-9_ -]*/i.test(crtFolder)) {
 }
 
 const options = {
-    key: fs.readFileSync(crtFolder + 'localhost.key'),
-    cert: fs.readFileSync(crtFolder + 'localhost.crt')
+    key: fs.existsSync(certificateFullPath.keyFile) && 
+        fs.readFileSync(certificateFullPath.keyFile),
+    cert: fs.existsSync(certificateFullPath.crtFile) &&
+        fs.readFileSync(certificateFullPath.crtFile),
 };
 
 const corsOptions = {
