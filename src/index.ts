@@ -101,7 +101,7 @@ const handleStart = () => {
   const selectedOption = dialog.showMessageBoxSync({
     type: 'error',
     title: 'Error de certificados',
-    message: `No se han encontrado los archivos de certificados. Debes copiarlos a la carpeta de destino e iniciar el agente nuevamente`,
+    message: `No se han encontrado los archivos de certificados. Debes copiarlos a la carpeta de destino e iniciar el agente nuevamente.`,
     buttons: ['Abrir carpeta', 'Cerrar agente']
   });
 
