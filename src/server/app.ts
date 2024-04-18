@@ -54,7 +54,7 @@ const io = socket(server, {cookie: false, serveClient: false});
 const poshandler = new PosHandler(io, pos);
 
 export default class Server {
-    start() {
+    start(): void {
 
         pos.autoconnect();
 
