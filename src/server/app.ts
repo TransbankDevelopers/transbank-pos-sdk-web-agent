@@ -13,6 +13,7 @@ const version = require('../../package.json');
 import pos from '../pos';
 import windowManager from "../classes/window-manager";
 import PosHandler from './poshandler';
+import { certificateFullPath } from './utils/utils';
 
 const app = express();
 
