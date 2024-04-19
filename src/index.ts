@@ -97,7 +97,7 @@ const handleStart = () => {
   if ( checkCertExists() ) {
     return createWindow();
   }
-  const opentPathOption = 0;
+  const openPathOption = 0;
   const selectedOption = dialog.showMessageBoxSync({
     type: 'error',
     title: 'Error de certificados',
@@ -105,7 +105,7 @@ const handleStart = () => {
     buttons: ['Abrir carpeta', 'Cerrar agente']
   });
 
-  if ( selectedOption == opentPathOption ) {   
+  if ( selectedOption == openPathOption ) {   
       shell.openPath(getCrtPath());
   }
 
