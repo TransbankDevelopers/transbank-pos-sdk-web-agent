@@ -11,12 +11,20 @@ function getCrtPath(): string {
     return crtPath;
 }
 
+enum certType {
+    key = 'keyFile',
+    crt = 'crtFile'
+}
+
 const certificateFullPath = {
     keyFile: `${getCrtPath()}localhost.key`,
     crtFile: `${getCrtPath()}localhost.crt`
 }
 
-function checkCertExists(): boolean {
+function checkCertExists(certificate?: certType): boolean {
+    if ( certificate ) {
+        return fs.existsSync(certificateFullPath[certificate]);
+    }
     let status = true;
     const files = Object.values(certificateFullPath)
     files.map( file => {
@@ -27,4 +35,13 @@ function checkCertExists(): boolean {
     return status;
 }
 
-export {checkCertExists, getCrtPath, certificateFullPath};
+function getCertOptions(): {key: Buffer|false, cert: Buffer|false} {
+    return {
+        key: checkCertExists(certType.key) &&
+            fs.readFileSync(certificateFullPath.keyFile),
+        cert: checkCertExists(certType.crt) &&
+            fs.readFileSync(certificateFullPath.crtFile)
+    };
+}
+
+export {checkCertExists, getCrtPath, getCertOptions};

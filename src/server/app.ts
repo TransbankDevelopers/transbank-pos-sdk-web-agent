@@ -13,16 +13,11 @@ const version = require('../../package.json');
 import pos from '../pos';
 import windowManager from "../classes/window-manager";
 import PosHandler from './poshandler';
-import { certificateFullPath } from './utils/certutils';
+import { getCertOptions } from './utils/certutils';
 
 const app = express();
 
-const options = {
-    key: fs.existsSync(certificateFullPath.keyFile) && 
-        fs.readFileSync(certificateFullPath.keyFile),
-    cert: fs.existsSync(certificateFullPath.crtFile) &&
-        fs.readFileSync(certificateFullPath.crtFile),
-};
+const options = getCertOptions();
 
 const corsOptions = {
     origin: '*',
