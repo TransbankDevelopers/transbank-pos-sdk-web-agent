@@ -3,7 +3,7 @@ import { app, BrowserWindow, ipcMain, Tray, Menu, nativeImage, dialog, shell} fr
 import path from 'path'
 import pos from './pos'
 import windowManager from "./classes/window-manager"
-import {checkCertExists, getCrtPath} from './server/utils/utils'
+import {checkCertExists, getCrtPath} from './server/utils/certutils'
 
 ipcMain.handle('connect-to-pos', (event, ...args) => {
   pos.autoconnect().then((port) => {
