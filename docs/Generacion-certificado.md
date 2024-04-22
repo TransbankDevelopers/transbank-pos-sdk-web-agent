@@ -17,7 +17,7 @@ Esto generará 2 archivos: **rootCA.key** y **rootCA.pem**
 
 Se debe definir una clave y la información adicional que solicita para crear el certificado el certificado.
 
-Es importante definir correctamente el CN del certificado, para este caso localhost.
+Es importante definir correctamente el **CN** del certificado, para este caso **localhost**.
 
 Ejemplo de ejecución del comando:
 
@@ -49,13 +49,13 @@ Ir a configuración del navegador -> privacidad y seguridad -> seguridad -> gest
 
 Desde ahí debes importar el certificado que creaste anteriormente (**rootCA.pem**).
 
-Luego de importarlo, podrás verificar que existe en tu lista de certificados uno nuevo emitido por *localhost*.
+Luego de importarlo, podrás verificar que existe en tu lista de certificados uno nuevo emitido por **localhost**.
 
 ## Crear certificado de dominio
 
 Para crear nuestro certificado de dominio, utilizaremos 2 archivos de configuración que podremos modificar con cualquier editor de texto.
 
-Crearemos primero un archivo llamado *server.csr.inf*, que deberá tener la siguiente estructura:
+Crearemos primero un archivo llamado **server.csr.inf**, que deberá tener la siguiente estructura:
 
 ```
 [req]
@@ -74,7 +74,7 @@ emailAddress=transbankdevelopers@continuumhq.com
 CN = localhost
 ```
 
-Personalizamos la sección *dn* con la información que utilizamos para la creación del primer certificado.
+Personalizamos la sección **dn** con la información que utilizamos para la creación del primer certificado.
 
 El segundo archivo a generar se llamará **v3.ext**.
 
@@ -101,7 +101,7 @@ openssl x509 -req -in server.csr -CA rootCA.pem -CAkey rootCA.key -CAcreateseria
 Como resultado de ejecutar ambos comandos, se habrán generado los archivos **localhost.key** y **localhost.crt**.
 
 ## Instalar certificado
-Luego de haber generado ambos certificados, se deben instalar para el funcionamiento del agente. Para esto deberás copiarlos a la carpeta 'resources/crt' de tu instalación del agente para POS.
+Luego de haber generado ambos certificados, se deben instalar para el funcionamiento del agente. Para esto deberás copiarlos a la carpeta **'resources/crt'** de tu instalación del agente para POS.
 Al iniciar el agente, si se han copiado correctamente se desplegará el siguiente mensaje:
 
 ![alt text](image.png)
