@@ -1,7 +1,7 @@
 # Certificados para localhost
 
 Este archivo contiene las instrucciones para generar tu propio certificado autofirmado de localhost que se utilizará en la instalación del agente.
-Para generar los archivos necesarios, debes disponer de una terminal y **openssl** instalado.
+Para generar los archivos necesarios, debes disponer de una terminal y **OpenSSL** instalado. Los archivos de ejemplo de este manual se han generado con **OpenSSL 3.2.0**.
 
 ## Generar certificado root
 
