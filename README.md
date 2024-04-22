@@ -14,7 +14,9 @@ Solo se debe descargar y ejecutar para iniciar este servicio en el computador do
 
 ## ¿Cómo usar?
 Descarga el ejecutable desde la [sección de releases](https://github.com/TransbankDevelopers/transbank-pos-sdk-web-client-nodejs/releases) y ejecutalo. 
-Una vez iniciada la aplicación por primera vez, se configurará automáticamente para arrancar al iniciar el computador. 
+Una vez iniciada la aplicación por primera vez, se configurará automáticamente para arrancar al iniciar el computador.
+
+Ten en cuenta que desde la versión 4.0.0 del agente debes usar certificados para su ejecución. Para generarlos puedes revisar el manual [Generación de certificados para localhost](docs/Generacion-certificado.md).
 
 
 # Inicio automático
