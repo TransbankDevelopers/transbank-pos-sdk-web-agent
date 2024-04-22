@@ -13,21 +13,11 @@ const version = require('../../package.json');
 import pos from '../pos';
 import windowManager from "../classes/window-manager";
 import PosHandler from './poshandler';
+import { getCertOptions } from './utils/certutils';
 
 const app = express();
 
-const crtFolder: string = process.env.NODE_ENV === "production" ?
-    path.join(__dirname, '../../../crt/') :
-    path.join(__dirname, '../../crt/');
-
-if(!/[A-Z][A-Z0-9_ -]*/i.test(crtFolder)) {
-    throw new Error('Invalid crt folder');
-}
-
-const options = {
-    key: fs.readFileSync(crtFolder + 'localhost.key'),
-    cert: fs.readFileSync(crtFolder + 'localhost.crt')
-};
+const options = getCertOptions();
 
 const corsOptions = {
     origin: '*',
@@ -38,7 +28,7 @@ const corsOptions = {
 
 const csrfProtection = csrf({ cookie: { httpOnly: true, secure: true }});
 
-app.use(cookieParser())
+app.use(cookieParser());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(csrfProtection);
 app.use(cors(corsOptions));
@@ -51,7 +41,7 @@ const io = socket(server, {cookie: false, serveClient: false});
 const poshandler = new PosHandler(io, pos);
 
 export default class Server {
-    start() {
+    start(): void {
 
         pos.autoconnect();
 
