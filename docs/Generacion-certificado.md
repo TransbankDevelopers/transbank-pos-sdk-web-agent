@@ -55,7 +55,7 @@ Luego de importarlo, podrás verificar que existe en tu lista de certificados un
 
 Para crear nuestro certificado de dominio, utilizaremos 2 archivos de configuración que podremos modificar con cualquier editor de texto.
 
-Crearemos primero un archivo llamado **server.csr.inf**, que deberá tener la siguiente estructura:
+Crearemos primero un archivo llamado **server.csr.cnf**, que deberá tener la siguiente estructura:
 
 ```
 [req]
