@@ -110,4 +110,6 @@ Desde cualquier navegador podremos comprobar que el agente es reconocido como un
 
 ![alt text](image-1.png)
 
-Si intentas iniciar el agente sin estos certificados obtendrás un error de ejecución.
+Si intentas iniciar el agente sin estos certificados obtendrás este error de ejecución:
+
+![alt text](image-2.png)
