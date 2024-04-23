@@ -1,3 +1,11 @@
+## [4.0.0] - 23-04-2024
+
+Se cambian funcionalidades. Funciona con la versión 4.0.0 del [SDK Web](https://github.com/TransbankDevelopers/transbank-pos-sdk-web-js/releases)
+
+### Changed
+
+- Ahora el agente usa https, por lo que es necesario utilizar certificados para su funcionamiento.
+
 ## [3.1.4] - 24-09-2021
 
 ### Fixed
