@@ -1,6 +1,6 @@
 ## [4.0.0] - 23-04-2024
 
-Se cambian funcionalidades. Funciona con la versión 4.0.0 del [SDK Web](https://github.com/TransbankDevelopers/transbank-pos-sdk-web-js/releases)
+Funciona con la versión 4.0.0 del [SDK Web](https://github.com/TransbankDevelopers/transbank-pos-sdk-web-js/releases)
 
 ### Changed
 
