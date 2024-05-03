@@ -1,7 +1,10 @@
-import { app, BrowserWindow, ipcMain, Tray, Menu, nativeImage} from 'electron';
+const AutoLaunch = require('auto-launch');
+import { app, BrowserWindow, ipcMain, Tray, Menu, nativeImage, dialog, shell} from 'electron';
 import path from 'path'
 import pos from './pos'
 import windowManager from "./classes/window-manager"
+import {checkCertExists, getCrtPath} from './server/utils/certutils'
+
 ipcMain.handle('connect-to-pos', (event, ...args) => {
   pos.autoconnect().then((port) => {
     if (port) {
@@ -12,7 +15,6 @@ ipcMain.handle('connect-to-pos', (event, ...args) => {
 import Server from './server/app';
 const server = new Server();
 
-var AutoLaunch = require('auto-launch');
 var autoLauncher = new AutoLaunch({
   name: "MyApp"
 });
@@ -56,7 +58,7 @@ const createWindow = (): BrowserWindow => {
     width: 450,
     icon: path.join(__dirname, '../../src/assets/icons/AppIcon.icns'),
     webPreferences: {
-      nodeIntegration: true,
+      nodeIntegration: true
     }
   });
 
@@ -90,10 +92,33 @@ const createWindow = (): BrowserWindow => {
 
 };
 
+const handleStart = () => {
+
+  if ( checkCertExists() ) {
+    return createWindow();
+  }
+  const openPathOption = 0;
+  const selectedOption = dialog.showMessageBoxSync({
+    type: 'error',
+    title: 'Error de certificados',
+    message: `No se han encontrado los archivos de certificados. Debes copiarlos a la carpeta de destino e iniciar el agente nuevamente.`,
+    buttons: ['Abrir carpeta', 'Cerrar agente'],
+    cancelId: 1
+  });
+
+  if ( selectedOption == openPathOption ) {   
+      shell.openPath(getCrtPath());
+  }
+
+  app.quit();
+
+};
+
+
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
-app.on('ready', createWindow);
+app.on('ready', handleStart);
 
 // Quit when all windows are closed, except on macOS. There, it's common
 // for applications and their menu bar to stay active until the user quits
