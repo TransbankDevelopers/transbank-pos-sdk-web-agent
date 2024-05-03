@@ -4,7 +4,7 @@ Se cambian funcionalidades. Funciona con la versión 4.0.0 del [SDK Web](https:/
 
 ### Changed
 
-- Ahora el agente usa https, por lo que es necesario utilizar certificados para su funcionamiento.
+- Ahora el agente usa https, por lo que es necesario utilizar certificados para su funcionamiento. Puedes ver la guía para generarlos en [este documento](docs/Generacion-certificado.md).
 
 ## [3.1.4] - 24-09-2021
 
