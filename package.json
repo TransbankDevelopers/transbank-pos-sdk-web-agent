@@ -97,7 +97,7 @@
     "cors": "^2.8.5",
     "csurf": "^1.11.0",
     "electron-squirrel-startup": "^1.0.0",
-    "express": "4.17.3",
+    "express": "4.20.0",
     "fs": "^0.0.1-security",
     "helmet": "^7.0.0",
     "hpp": "^0.2.3",
