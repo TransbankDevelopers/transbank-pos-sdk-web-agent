@@ -1,6 +1,8 @@
 # Transbank SDK Web - Agente
 Este proyecto es parte del SDK Web para POS integrado. 
 
+# Este proyecto se ha archivado, en favor de mantener el nuevo [Agente Web](https://github.com/TransbankDevelopers/transbank-pos-sdk-web-agent2)
+
 ## SDK Web POS Integrado
 Este SDK Web consta de dos partes: 
 
